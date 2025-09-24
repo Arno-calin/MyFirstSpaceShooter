@@ -1,0 +1,83 @@
+# Unreal Engine 5, Rider, and Perforce .gitignore
+
+# -----------------------------------------------------------------------------
+# Unreal Engine
+# -----------------------------------------------------------------------------
+
+# Binaires générés par le moteur et le projet
+Binaries/
+Build/
+
+# Cache des données dérivées, souvent grand et non essentiel au partage
+DerivedDataCache/
+
+# Fichiers de log, de sauvegarde et de cache de l'éditeur
+Saved/
+
+# Fichiers intermédiaires générés lors de la compilation
+Intermediate/
+
+# Fichiers temporaires des IDE
+.vs/
+.vscode/
+
+# Fichiers de projet Visual Studio
+*.VC.db
+*.sln
+*.suo
+*.VC.opendb
+*.vcxproj
+*.vcxproj.user
+*.natvis
+*.pdb
+
+# Autres fichiers générés par le build
+*.obj
+*.o
+*.lib
+*.a
+*.ilk
+*.idb
+*.tlog
+*.log
+*.manifest
+*.sdf
+*.ipch
+
+# Fichiers temporaires
+*.tmp
+*.temp
+
+# Fichiers spécifiques au système d'exploitation
+.DS_Store
+Thumbs.db
+
+# -----------------------------------------------------------------------------
+# Rider
+# -----------------------------------------------------------------------------
+
+# Dossier du projet Rider
+.idea/
+
+# Fichiers de configuration et de cache de Rider
+*.user
+*.pid
+*.userprefs
+*.DotSettings.user
+*.resharper
+
+# Fichiers temporaires de Rider
+*.tmp
+*.temp
+
+# -----------------------------------------------------------------------------
+# Perforce
+# -----------------------------------------------------------------------------
+
+# Fichiers de workspace Perforce. Le client Perforce gère ces fichiers.
+.p4tickets
+.p4envi
+.p4ignore
+
+# Fichiers spécifiques au client Perforce qui n'ont pas besoin d'être versionnés
+*.p4v
