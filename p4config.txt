@@ -1,0 +1,4 @@
+P4PORT=ssl:perforce.uqac.ca:1666
+P4USER=apaumier
+P4CLIENT=apaumier_P1-6150-21_dev_space_shooter_tp1
+P4IGNORE=.p4ignore.txt;.gitignore
