@@ -42,6 +42,7 @@ void AAsteroid::OnBeginOverlap(AActor* MyActor, AActor* OtherActor)
 {
 	if (Cast<AAsteroid>(OtherActor))
 	{
+		Explosion();
 		OtherActor->Destroy();
 		MyActor->Destroy();
 	}
