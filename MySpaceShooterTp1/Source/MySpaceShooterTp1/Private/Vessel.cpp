@@ -113,7 +113,7 @@ void AVessel::OnBeginOverlap(AActor* MyActor, AActor* OtherActor)
 		asteroid->Destroy();
 		VesselCurrentLife--;
 		if (!isAlife())
-			Destroy();
+			GameOver();
 	}
 }
 

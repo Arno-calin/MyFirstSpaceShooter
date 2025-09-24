@@ -3,6 +3,7 @@
 
 #include "Public/KillZone.h"
 
+#include "Vessel.h"
 #include "Components/BoxComponent.h"
 
 // Sets default values
@@ -23,8 +24,12 @@ void AKillZone::BeginPlay()
 
 void AKillZone::OnBeginOverlap(AActor* MyActor, AActor* OtherActor)
 {
-	if (!Cast<AKillZone>(MyActor))
+	if (!Cast<AKillZone>(OtherActor))
+	{
+		if (auto Vessel = Cast<AVessel>(OtherActor))
+			Vessel->GameOver();
 		OtherActor->Destroy();
+	}
 }
 
 // Called every frame
