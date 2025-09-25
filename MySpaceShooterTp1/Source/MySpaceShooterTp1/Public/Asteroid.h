@@ -38,6 +38,11 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void Explosion(FVector ExplosionPosition);
+	UFUNCTION(BlueprintImplementableEvent)
+	void DeadExplosion(FVector ExplosionPosition);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

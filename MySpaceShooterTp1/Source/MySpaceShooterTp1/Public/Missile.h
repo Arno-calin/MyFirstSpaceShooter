@@ -31,6 +31,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void OnBeginOverlap(AActor* MyActor, AActor* OtherActor);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void Explosion(FVector ExplosionPosition);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

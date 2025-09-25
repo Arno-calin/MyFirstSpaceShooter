@@ -31,7 +31,10 @@ void AAsteroid::SetLifeMinusOne()
 {
 	CurrentLife--;
 	if (!isAlife())
+	{
+		DeadExplosion(GetActorLocation());
 		Destroy();
+	}
 }
 bool AAsteroid::isAlife()
 {
@@ -42,6 +45,7 @@ void AAsteroid::OnBeginOverlap(AActor* MyActor, AActor* OtherActor)
 {
 	if (Cast<AAsteroid>(OtherActor))
 	{
+		Explosion(GetActorLocation());
 		OtherActor->Destroy();
 		MyActor->Destroy();
 	}

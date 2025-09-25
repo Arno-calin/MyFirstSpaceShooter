@@ -37,6 +37,7 @@ void AMissile::OnBeginOverlap(AActor* MyActor, AActor* OtherActor)
 	if (auto asteroid = Cast<AAsteroid>(OtherActor))
 	{
 		asteroid->SetLifeMinusOne();
+		Explosion(GetActorLocation());
 		MyActor->Destroy();
 	}
 }
