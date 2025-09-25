@@ -31,6 +31,11 @@ class MYSPACESHOOTERTP1_API ASpawner : public AActor
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Enemy Spawner", meta = (AllowPrivateAccess = "true"))
 	float MaxDelayToSpawn = 10.0f;
 	void SetTimer();
+	
+	void SetLevelTimer();
+	FTimerHandle LevelTimer;
+	void NextLevel();
+	FVector SpawnScale;
 
 public:
 	ASpawner();

@@ -36,6 +36,12 @@ void AAsteroid::SetLifeMinusOne()
 		Destroy();
 	}
 }
+
+void AAsteroid::SetScale(FVector Scale)
+{
+	SetActorScale3D(Scale);
+}
+
 bool AAsteroid::isAlife()
 {
 	return CurrentLife > 0;

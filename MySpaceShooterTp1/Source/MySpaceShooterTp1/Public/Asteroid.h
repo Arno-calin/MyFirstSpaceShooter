@@ -33,6 +33,8 @@ public:
 
 	void SetMovement(const FVector& Movement);
 	void SetLifeMinusOne();
+
+	void SetScale(FVector Scale);
 	
 protected:
 	// Called when the game starts or when spawned

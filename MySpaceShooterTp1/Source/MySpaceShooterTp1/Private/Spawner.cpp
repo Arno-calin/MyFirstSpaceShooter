@@ -10,12 +10,29 @@ void ASpawner::SetTimer()
 	                                       FMath::RandRange(MinDelayToSpawn, MaxDelayToSpawn));
 }
 
+void ASpawner::SetLevelTimer()
+{
+	GetWorld()->GetTimerManager().SetTimer(LevelTimer, this, &ASpawner::NextLevel,20);
+}
+
+void ASpawner::NextLevel()
+{
+	if (SpawnScale != FVector(0.5f,0.5f,0.5f))
+		SetLevelTimer();
+	SpawnScale.X-=0.10;
+	SpawnScale.Y-=0.10;
+	SpawnScale.Z-=0.10;
+	if (MaxDelayToSpawn > 3)
+		MaxDelayToSpawn-=0.5f;
+}
+
 ASpawner::ASpawner()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
 	SpawnerBox = CreateDefaultSubobject<UBoxComponent>(TEXT("MyBox"));
 	RootComponent = SpawnerBox;
+	SpawnScale = FVector(2.f,2.f,2.f);
 }
 
 void ASpawner::SpawnEnemy()
@@ -56,13 +73,16 @@ void ASpawner::SpawnEnemy()
 		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 		AAsteroid* asteroid = GetWorld()->SpawnActor<AAsteroid>(ClassToSpawn, RandomPosition, FRotator::ZeroRotator, SpawnParams);
 		if (asteroid)
+		{
+			asteroid->SetScale(SpawnScale);
 			asteroid->SetMovement(SpawnDirection + RandomModificatorSpawnDirection);
+		}
 	}
 	SetTimer();
 }
 void ASpawner::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(SpawnTimer, this, &ASpawner::SpawnEnemy,
-	                                       FMath::RandRange(MinDelayToSpawn, MaxDelayToSpawn));
+	SetLevelTimer();
+	SetTimer();
 }
