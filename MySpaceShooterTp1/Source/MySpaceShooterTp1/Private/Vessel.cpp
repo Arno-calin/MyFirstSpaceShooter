@@ -46,6 +46,7 @@ void AVessel::BeginPlay()
 {
 	Super::BeginPlay();
 	SetScoreTimer();
+	Cast<UPrimitiveComponent>(GetRootComponent())->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	this->OnActorBeginOverlap.AddDynamic(this, &AVessel::OnBeginOverlap);
 }
 
@@ -98,7 +99,10 @@ void AVessel::Spawn()
 {
 	AMissile* newMissle = GetWorld()->SpawnActor<AMissile>(MissileToSpawn, VesselMovementComponent->GetActorLocation()+VesselMesh->GetUpVector()*100,VesselMesh->GetComponentRotation());
 	if (newMissle)
+	{
 		newMissle->SetMovement(VesselMesh->GetUpVector()*10);
+		FireExplosion(newMissle->GetActorLocation());
+	}
 }
 
 bool AVessel::isAlife()
@@ -112,6 +116,7 @@ void AVessel::OnBeginOverlap(AActor* MyActor, AActor* OtherActor)
 	{
 		asteroid->Destroy();
 		VesselCurrentLife--;
+		AsteroidExplosion(VesselMesh->GetComponentLocation());
 		if (!isAlife())
 			GameOver();
 	}

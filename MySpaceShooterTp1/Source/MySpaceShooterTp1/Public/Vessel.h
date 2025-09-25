@@ -54,6 +54,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void FireExplosion(FVector ExplosionPosition);
+	UFUNCTION(BlueprintImplementableEvent)
+	void AsteroidExplosion(FVector ExplosionPosition);
 	
 public:	
 	// Called every frame

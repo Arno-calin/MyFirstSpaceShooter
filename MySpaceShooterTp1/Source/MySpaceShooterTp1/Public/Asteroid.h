@@ -39,7 +39,9 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void Explosion();
+	void Explosion(FVector ExplosionPosition);
+	UFUNCTION(BlueprintImplementableEvent)
+	void DeadExplosion(FVector ExplosionPosition);
 
 public:	
 	// Called every frame
